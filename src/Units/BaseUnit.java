@@ -5,8 +5,8 @@ public class BaseUnit implements GameInterface{
     String name;
     boolean die;
 
-    public BaseUnit(int hp, int maxHP, int initiative, String name) {
-        this.hp = hp;
+    public BaseUnit(int maxHP, int initiative, String name) {
+        this.hp = maxHP;
         this.maxHP = maxHP;
         this.initiative = initiative;
         this.name = name;
