@@ -1,9 +1,9 @@
 package Units;
 
-public class BaseUnit implements GameInterface{
+public class BaseUnit implements GameInterface {
     protected int hp, maxHP, initiative;
-    String name;
-    boolean die;
+    protected String name;
+    protected boolean die;
 
     public BaseUnit(int maxHP, int initiative, String name) {
         this.hp = maxHP;
@@ -13,8 +13,11 @@ public class BaseUnit implements GameInterface{
         this.die = false;
     }
 
+    // Персонаж проверяет, что он не мёртв
     @Override
     public void step() {
-        if (hp < 1) die = true;
+        if (!die) {
+            if (hp < 1) die = true;
+        }
     }
 }
