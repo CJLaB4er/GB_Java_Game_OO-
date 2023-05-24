@@ -1,6 +1,6 @@
 package Units;
 
-public class BaseUnit implements GameInterface {
+public abstract class BaseUnit implements GameInterface {
     protected int hp, maxHP, initiative;
     protected String name;
     protected boolean die;

@@ -1,7 +1,11 @@
 package Units;
 
 public class Peasant extends BaseUnit {
-    public Peasant(int maxHP, int initiative, String name) {
-        super(maxHP, initiative, name);
+    /*
+    Создание юнита "Крестьянин", параметр "name" передаётся при создании объекта,
+    остальные параметры передаются через конструктор в базовый класс.
+     */
+    public Peasant(String name) {
+        super(5, 7, name);
     }
 }
