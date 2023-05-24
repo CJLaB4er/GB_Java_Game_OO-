@@ -6,6 +6,6 @@ public class Peasant extends BaseUnit {
     остальные параметры передаются через конструктор в базовый класс.
      */
     public Peasant(String name) {
-        super(5, 7, name);
+        super(5, 7, 1, name);
     }
 }
