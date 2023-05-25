@@ -1,6 +1,6 @@
 package Units;
 
-public class Magic extends BaseUnit{
+public abstract class Magic extends BaseUnit{
     int mp, maxMp;
 
     public Magic(int maxHP, int initiative, int damage, String name, int mp, int maxMp) {
