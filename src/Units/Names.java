@@ -1,2 +1,5 @@
-package Units;public enum Names {
+package Units;
+
+public enum Names {
+    Иван, Николай, Алексей, Пётр, Павел, Юдик, Женёк, Кейси, Кахир, Гуннар, Луиджи, Лотар;
 }

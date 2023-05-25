@@ -2,8 +2,8 @@ package Units;
 
 import java.util.ArrayList;
 
-public class infantryman extends Melle{
-    public infantryman(String name, int x, int y, ArrayList<BaseUnit> team) {
+public class Infantryman extends Melle{
+    public Infantryman(String name, int x, int y, ArrayList<BaseUnit> team) {
         super(40, 5, 5, name, x, y, team);
     }
 }

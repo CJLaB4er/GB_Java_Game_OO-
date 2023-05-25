@@ -20,6 +20,11 @@ public abstract class BaseUnit implements GameInterface {
         this.coord = new Coord(x, y);
     }
 
+    public int compareTo(Object item) {
+        BaseUnit unit = (BaseUnit) item;
+        return this.initiative - unit.initiative;
+    }
+
     // Персонаж проверяет, что он не мёртв
     @Override
     public void step() {
