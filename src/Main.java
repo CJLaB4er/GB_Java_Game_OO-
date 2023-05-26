@@ -36,7 +36,7 @@ public class Main {
                     darkTeam.add(new Spearman(getName(), i + 1, 1, darkTeam));
                     break;
                 case 5:
-                    darkTeam.add(new Infantryman(getName(), i + 1, 1, darkTeam));
+                    darkTeam.add(new Infantry(getName(), i + 1, 1, darkTeam));
                     break;
                 case 6:
                     darkTeam.add(new Peasant(getName(), i + 1, 1, darkTeam));
@@ -61,7 +61,7 @@ public class Main {
                     holyTeam.add(new Spearman(getName(), i + 1, 10, holyTeam));
                     break;
                 case 5:
-                    holyTeam.add(new Infantryman(getName(), i + 1, 10, holyTeam));
+                    holyTeam.add(new Infantry(getName(), i + 1, 10, holyTeam));
                     break;
                 case 6:
                     holyTeam.add(new Peasant(getName(), i + 1, 10, holyTeam));

@@ -33,13 +33,16 @@ public class View {
         for (BaseUnit unit : Main.allTeam) {
             if (unit.getCoord()[0] == x && unit.getCoord()[1] == y) {
                 if (unit.die()) {
-                    out = "|" + (AnsiColors.ANSI_RED + unit.toString().charAt(0) + AnsiColors.ANSI_RESET);
+                    out = "|" + (AnsiColors.ANSI_RED + unit.getInfo().charAt(0) + AnsiColors.ANSI_RESET);
+
                     break;
                 }
                 if (Main.darkTeam.contains(unit))
-                    out = "|" + (AnsiColors.ANSI_BLUE + unit.toString().charAt(0) + AnsiColors.ANSI_RESET);
+                    out = "|" + (AnsiColors.ANSI_BLUE + unit.getInfo().charAt(0) + AnsiColors.ANSI_RESET);
+
                 if (Main.holyTeam.contains(unit))
-                    out = "|" + (AnsiColors.ANSI_GREEN + unit.toString().charAt(0) + AnsiColors.ANSI_RESET);
+                    out = "|" + (AnsiColors.ANSI_GREEN + unit.getInfo().charAt(0) + AnsiColors.ANSI_RESET);
+
                 break;
             }
         }
@@ -58,17 +61,15 @@ public class View {
         System.out.println("");
         System.out.print(top10 + "    ");
         System.out.print("Blue side");
-        System.out.print(" ".repeat(l[0] - 9));
+        System.out.print(" ".repeat(l[0]-9));
         System.out.println(":\tGreen side");
 
         for (int i = 1; i < 11; i++) {
-//            System.out.print(getChar(1, i)); // Изначально переданный преподавателем код
             System.out.print(getChar(1, i));
         }
         System.out.print("|    ");
         System.out.print(Main.darkTeam.get(0));
-        tabSetter(Main.darkTeam.get(0).toString().length(), l[0]); // Изначально переданный преподавателем код
-//        tabSetter(Main.darkTeam.get(0).getInfo().length(), l[0]); // Замена метода toString() на getInfo()
+        tabSetter(Main.darkTeam.get(0).toString().length(), l[0]); // Изначально переданный преподавателем код !
         System.out.println(Main.holyTeam.get(0));
         System.out.println(midl10);
 
@@ -78,7 +79,7 @@ public class View {
             }
             System.out.print("|    ");
             System.out.print(Main.darkTeam.get(i - 1));
-            tabSetter(Main.darkTeam.get(i - 1).toString().length(), l[0]);
+            tabSetter(Main.darkTeam.get(i - 1).getInfo().length(), l[0]);
             System.out.println(Main.holyTeam.get(i - 1));
             System.out.println(midl10);
         }
@@ -87,7 +88,7 @@ public class View {
         }
         System.out.print("|    ");
         System.out.print(Main.darkTeam.get(9));
-        tabSetter(Main.darkTeam.get(9).toString().length(), l[0]);
+        tabSetter(Main.darkTeam.get(9).getInfo().length(), l[0]);
         System.out.println(Main.holyTeam.get(9));
         System.out.println(bottom10);
     }

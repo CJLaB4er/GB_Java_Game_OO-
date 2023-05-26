@@ -2,14 +2,16 @@ package Units;
 
 import java.util.ArrayList;
 
-import Units.Coord;
-
 public abstract class BaseUnit implements GameInterface {
     protected int hp, maxHP, initiative, damage;
     protected String name;
     protected boolean die;
     protected Coord coord;
     protected ArrayList<BaseUnit> team;
+
+    private final Character simbHP = '\u2764';
+    private final Character simbDamage = '\u2694';
+    private final Character simbDie = '\u2620';
 
     public BaseUnit(int maxHP, int initiative, int damage, String name, int x, int y, ArrayList<BaseUnit> team) {
         this.hp = maxHP;
@@ -43,6 +45,21 @@ public abstract class BaseUnit implements GameInterface {
 
     @Override
     public String toString() {
+        if (die)
+            return this.getClass().getSimpleName() + ' '
+                    + this.name + ' '
+                    + simbHP + this.hp + '/' + this.maxHP + ' '
+                    + simbDamage + this.damage + ' '
+                    + simbDie;
+        return this.getClass().getSimpleName() + ' '
+                + this.name + ' '
+                + simbHP + this.hp + '/' + this.maxHP + ' '
+                + simbDamage
+                + this.damage;
+    }
+
+    @Override
+    public String getInfo() {
         return this.getClass().getSimpleName();
     }
 }
