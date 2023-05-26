@@ -8,13 +8,13 @@ public class Coord {
         this.y = y;
     }
 
-    public float getCoord(Coord object) {
+    public float getDistanse(Coord object) {
         float dx = object.x - this.x;
         float dy = object.y - this.y;
         return (float) (dx * dx + dy * dy);
     }
 
-    public int[] getXY(Coord object) {
+    public int[] getCoord() {
         return new int[]{this.x, this.y};
     }
 }

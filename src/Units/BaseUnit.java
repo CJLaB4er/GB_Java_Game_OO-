@@ -1,7 +1,8 @@
 package Units;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import Units.Coord;
 
 public abstract class BaseUnit implements GameInterface {
     protected int hp, maxHP, initiative, damage;
@@ -27,9 +28,21 @@ public abstract class BaseUnit implements GameInterface {
 
     // Персонаж проверяет, что он не мёртв
     @Override
-    public void step() {
-        if (!die) {
-            if (hp < 1) die = true;
-        }
+    public void step(ArrayList<BaseUnit> enemys) {
+        if (hp < 1) die = true;
+    }
+
+
+    public int[] getCoord() {
+        return this.coord.getCoord();
+    }
+
+    public boolean die() {
+        return this.die;
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
     }
 }
