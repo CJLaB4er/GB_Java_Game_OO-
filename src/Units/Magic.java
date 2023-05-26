@@ -18,4 +18,26 @@ public abstract class Magic extends BaseUnit {
                 + "MP:" + this.mp
                 + '/' + this.maxMp;
     }
+
+    @Override
+    public void step(ArrayList<BaseUnit> enemys) {
+        super.step(enemys);
+        if (!this.die()) {
+            BaseUnit target = whoNeedHeal();
+            if (target != null) target.hp = target.hp + this.damage;
+        }
+    }
+
+    protected BaseUnit whoNeedHeal() {
+        BaseUnit target = null;
+        for (BaseUnit unit : this.team) {
+            if (unit.hp < unit.maxHP && target == null) {
+                target = unit;
+            } else if (unit.hp < unit.maxHP && unit.hp < target.hp) {
+                target = unit;
+            }
+        }
+        return target;
+    }
+
 }

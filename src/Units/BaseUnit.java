@@ -34,6 +34,7 @@ public abstract class BaseUnit implements GameInterface {
     @Override
     public void step(ArrayList<BaseUnit> enemys) {
         if (hp < 1) die = true;
+        if (hp > maxHP) hp = maxHP;
     }
 
 
