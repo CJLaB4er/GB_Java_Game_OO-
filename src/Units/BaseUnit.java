@@ -22,6 +22,7 @@ public abstract class BaseUnit implements GameInterface {
         this.die = false;
         this.damage = damage;
         this.coord = new Coord(x, y);
+        this.team = team;
     }
 
     public int compareTo(Object item) {
@@ -47,8 +48,18 @@ public abstract class BaseUnit implements GameInterface {
     @Override
     public String toString() {
         if (die)
-            return this.getClass().getSimpleName() + ' ' + this.name + ' ' + simbHP + this.hp + '/' + this.maxHP + ' ' + simbDamage + this.damage + ' ' + simbDie;
-        return this.getClass().getSimpleName() + ' ' + this.name + ' ' + simbHP + this.hp + '/' + this.maxHP + ' ' + simbDamage + this.damage;
+            return simbDie + " "
+                    + this.getClass().getSimpleName() + ' '
+                    + this.name + ' '
+                    + simbHP + this.hp + '/'
+                    + this.maxHP + ' '
+                    + simbDamage
+                    + this.damage;
+        return this.getClass().getSimpleName() + ' '
+                + this.name + ' '
+                + simbHP + this.hp + '/'
+                + this.maxHP + ' '
+                + simbDamage + this.damage;
     }
 
     @Override
@@ -59,7 +70,7 @@ public abstract class BaseUnit implements GameInterface {
     @Override
     public BaseUnit findTarger(ArrayList<BaseUnit> team) {
         BaseUnit target = null;
-        float minDist = 10f;
+        float minDist = 50f;
         for (BaseUnit unit : team) {
             if (unit.die) continue;
             float tmp = unit.coord.getDistanse(this.coord);
