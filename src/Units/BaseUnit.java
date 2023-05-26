@@ -1,6 +1,7 @@
 package Units;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BaseUnit implements GameInterface {
     protected int hp, maxHP, initiative, damage;
@@ -46,20 +47,27 @@ public abstract class BaseUnit implements GameInterface {
     @Override
     public String toString() {
         if (die)
-            return this.getClass().getSimpleName() + ' '
-                    + this.name + ' '
-                    + simbHP + this.hp + '/' + this.maxHP + ' '
-                    + simbDamage + this.damage + ' '
-                    + simbDie;
-        return this.getClass().getSimpleName() + ' '
-                + this.name + ' '
-                + simbHP + this.hp + '/' + this.maxHP + ' '
-                + simbDamage
-                + this.damage;
+            return this.getClass().getSimpleName() + ' ' + this.name + ' ' + simbHP + this.hp + '/' + this.maxHP + ' ' + simbDamage + this.damage + ' ' + simbDie;
+        return this.getClass().getSimpleName() + ' ' + this.name + ' ' + simbHP + this.hp + '/' + this.maxHP + ' ' + simbDamage + this.damage;
     }
 
     @Override
     public String getInfo() {
         return this.getClass().getSimpleName();
+    }
+
+    @Override
+    public BaseUnit findTarger(ArrayList<BaseUnit> team) {
+        BaseUnit target = null;
+        float minDist = 10f;
+        for (BaseUnit unit : team) {
+            if (unit.die) continue;
+            float tmp = unit.coord.getDistanse(this.coord);
+            if (tmp < minDist){
+                minDist = tmp;
+                target = unit;
+            }
+        }
+        return target;
     }
 }

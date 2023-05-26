@@ -20,4 +20,16 @@ public abstract class Shooter extends BaseUnit {
                 + "ammo:" + this.ammunition
                 + '/' + this.maxAmmunition;
     }
+
+    @Override
+    public void step(ArrayList<BaseUnit> enemys) {
+        super.step(enemys);
+        if (!this.die()){
+            BaseUnit target = findTarger(enemys);
+            if (target != null && this.ammunition > 0) {
+                target.hp =  target.hp - this.damage;
+                this.ammunition--;
+            }
+        }
+    }
 }

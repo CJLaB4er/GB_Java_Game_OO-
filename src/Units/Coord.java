@@ -8,10 +8,10 @@ public class Coord {
         this.y = y;
     }
 
-    public float getDistanse(Coord object) {
-        float dx = object.x - this.x;
-        float dy = object.y - this.y;
-        return (float) (dx * dx + dy * dy);
+    public float getDistanse(Coord unit) {
+        float dx = unit.x - this.x;
+        float dy = unit.y - this.y;
+        return (float) Math.sqrt(dx * dx + dy * dy);
     }
 
     public int[] getCoord() {
