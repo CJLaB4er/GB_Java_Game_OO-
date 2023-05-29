@@ -73,11 +73,12 @@ public abstract class BaseUnit implements GameInterface {
         BaseUnit target = null;
         float minDist = 50f;
         for (BaseUnit unit : team) {
-            if (unit.die) continue;
-            float tmp = unit.coord.getDistanse(this.coord);
-            if (tmp < minDist){
-                minDist = tmp;
-                target = unit;
+            if (!unit.die) {
+                float tmp = unit.coord.getDistanse(this.coord);
+                if (tmp < minDist) {
+                    minDist = tmp;
+                    target = unit;
+                }
             }
         }
         return target;

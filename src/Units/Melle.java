@@ -27,12 +27,37 @@ public abstract class Melle extends BaseUnit {
         // ищем короткий путь
         if (Math.abs(dy) > Math.abs(dx)) {
             // смещение для разных команд
-            if (dy < 0) this.coord.y++;
-            else this.coord.y--;
-        } else {
-            if (dx < 0) this.coord.x++;
-            else this.coord.x--;
-        }
+            if (dy < 0) {
+                // проверяем, что ячейка не занята союзником
+                if (cellIsEpty(this.coord.x, this.coord.y + 1)) {
+                    this.coord.y++;
+                }
+            } else {
+                if (cellIsEpty(this.coord.x, this.coord.y - 1)) {
+                    this.coord.y--;
+                }
+            }
 
+        } else {
+            if (dx < 0) {
+                if (cellIsEpty(this.coord.x + 1, this.coord.y)) {
+                    this.coord.x++;
+                }
+            } else {
+                if (cellIsEpty(this.coord.x - 1, this.coord.y)) {
+                    this.coord.x--;
+                }
+            }
+
+        }
     }
+
+
+    protected boolean cellIsEpty(int x, int y) {
+        for (BaseUnit unit : team) {
+            if (unit.coord.x == x && unit.coord.y == y) return false;
+        }
+        return true;
+    }
+
 }
