@@ -26,38 +26,46 @@ public abstract class Melle extends BaseUnit {
 
         // ищем короткий путь
         if (Math.abs(dy) > Math.abs(dx)) {
-            // смещение для разных команд
-            if (dy < 0) {
-                // проверяем, что ячейка не занята союзником
-                if (cellIsEpty(this.coord.x, this.coord.y + 1)) {
-                    this.coord.y++;
-                }
-            } else {
-                if (cellIsEpty(this.coord.x, this.coord.y - 1)) {
-                    this.coord.y--;
-                }
-            }
-
+            moveY(dx, dy, true);
         } else {
-            if (dx < 0) {
-                if (cellIsEpty(this.coord.x + 1, this.coord.y)) {
-                    this.coord.x++;
-                }
-            } else {
-                if (cellIsEpty(this.coord.x - 1, this.coord.y)) {
-                    this.coord.x--;
-                }
-            }
 
+            moveX(dx, dy, true);
         }
     }
 
 
     protected boolean cellIsEpty(int x, int y) {
         for (BaseUnit unit : team) {
-            if (unit.coord.x == x && unit.coord.y == y) return false;
+            if (unit.coord.x == x && unit.coord.y == y && !unit.die()) return false;
         }
         return true;
     }
 
+    protected void moveX(float dx, float dy, boolean flag) {
+        if (flag) {
+            if (dx < 0) {
+                if (cellIsEpty(this.coord.x + 1, this.coord.y)) {
+                    this.coord.x++;
+                } else moveY(dx, dy, false);
+            } else {
+                if (cellIsEpty(this.coord.x - 1, this.coord.y)) {
+                    this.coord.x--;
+                } else moveY(dx, dy, false);
+            }
+        }
+    }
+
+    protected void moveY(float dx, float dy, boolean flag) {
+        if (flag) {
+            if (dy < 0) {
+                if (cellIsEpty(this.coord.x, this.coord.y + 1)) {
+                    this.coord.y++;
+                } else moveX(dx, dy, false);
+            } else {
+                if (cellIsEpty(this.coord.x, this.coord.y - 1)) {
+                    this.coord.y--;
+                } else moveX(dx, dy, false);
+            }
+        }
+    }
 }
