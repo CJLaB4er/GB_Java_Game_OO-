@@ -1,7 +1,6 @@
 package Units;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class BaseUnit implements GameInterface {
     protected int hp, maxHP, initiative, damage;

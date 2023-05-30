@@ -61,7 +61,7 @@ public class View {
         System.out.println("");
         System.out.print(top10 + "    ");
         System.out.print("Blue side");
-        System.out.print(" ".repeat(l[0]-9));
+        System.out.print(" ".repeat(l[0]-8));
         System.out.println(":\tGreen side");
 
         for (int i = 1; i < 11; i++) {
@@ -79,7 +79,7 @@ public class View {
             }
             System.out.print("|    ");
             System.out.print(Main.darkTeam.get(i - 1));
-            tabSetter(Main.darkTeam.get(i - 1).getInfo().length(), l[0]);
+            tabSetter(Main.darkTeam.get(i - 1).toString().length(), l[0]);
             System.out.println(Main.holyTeam.get(i - 1));
             System.out.println(midl10);
         }
@@ -88,7 +88,7 @@ public class View {
         }
         System.out.print("|    ");
         System.out.print(Main.darkTeam.get(9));
-        tabSetter(Main.darkTeam.get(9).getInfo().length(), l[0]);
+        tabSetter(Main.darkTeam.get(9).toString().length(), l[0]);
         System.out.println(Main.holyTeam.get(9));
         System.out.println(bottom10);
     }
