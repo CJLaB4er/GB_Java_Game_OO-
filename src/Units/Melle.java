@@ -10,7 +10,7 @@ public abstract class Melle extends BaseUnit {
     @Override
     public void step(ArrayList<BaseUnit> enemys) {
         super.step(enemys);
-        if (!this.die) {
+        if (!this.die()) {
             BaseUnit target = findTarger(enemys);
             if (target != null) {
                 if (target.coord.getDistanse(this.coord) < 2) target.hp = target.hp - this.damage;

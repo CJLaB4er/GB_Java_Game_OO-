@@ -6,7 +6,7 @@ import java.util.List;
 public abstract class BaseUnit implements GameInterface {
     protected int hp, maxHP, initiative, damage;
     protected String name;
-    protected boolean die;
+    //    protected boolean die;
     protected Coord coord;
     protected ArrayList<BaseUnit> team;
 
@@ -19,7 +19,7 @@ public abstract class BaseUnit implements GameInterface {
         this.maxHP = maxHP;
         this.initiative = initiative;
         this.name = name;
-        this.die = false;
+//        this.die = false;
         this.damage = damage;
         this.coord = new Coord(x, y);
         this.team = team;
@@ -33,7 +33,7 @@ public abstract class BaseUnit implements GameInterface {
     // Персонаж проверяет, что он не мёртв
     @Override
     public void step(ArrayList<BaseUnit> enemys) {
-        if (hp < 1) die = true;
+//        if (hp < 1) die = true;
         if (hp > maxHP) hp = maxHP;
     }
 
@@ -43,12 +43,13 @@ public abstract class BaseUnit implements GameInterface {
     }
 
     public boolean die() {
-        return this.die;
+//        return this.die;
+        return hp < 1;
     }
 
     @Override
     public String toString() {
-        if (die)
+        if (die())
             return simbDie + " "
                     + this.getClass().getSimpleName() + ' '
                     + this.name + ' '
@@ -73,7 +74,7 @@ public abstract class BaseUnit implements GameInterface {
         BaseUnit target = null;
         float minDist = 50f;
         for (BaseUnit unit : team) {
-            if (!unit.die) {
+            if (!unit.die()) {
                 float tmp = unit.coord.getDistanse(this.coord);
                 if (tmp < minDist) {
                     minDist = tmp;

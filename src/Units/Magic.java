@@ -31,9 +31,9 @@ public abstract class Magic extends BaseUnit {
     protected BaseUnit whoNeedHeal() {
         BaseUnit target = null;
         for (BaseUnit unit : this.team) {
-            if (!unit.die && unit.hp < unit.maxHP && target == null) {
+            if (!unit.die() && unit.hp < unit.maxHP && target == null) {
                 target = unit;
-            } else if (!unit.die && unit.hp < unit.maxHP && unit.hp < target.hp) {
+            } else if (!unit.die() && unit.hp < unit.maxHP && unit.hp < target.hp) {
                 target = unit;
             }
         }
